@@ -1,0 +1,40 @@
+name: Lint the code-base and test the code
+on: push
+jobs:
+  linting-the-code-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code syntax checkings
+        uses: actions/checkout@v6
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+
+      - name: test-the-code
+        run: npm test
+
+
+  deploy:
+    needs: linting-the-code-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: code syntax checkings
+        uses: actions/checkout@v6
+      - name: setup node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: building
+        run: npm run build
+      - name: deploy
+        run: echo "Deploying...."  
+                   
