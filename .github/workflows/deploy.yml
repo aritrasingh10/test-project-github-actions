@@ -13,8 +13,9 @@ jobs:
 
 
   testing:
-     runs-on: ubuntu-latest
-     steps:
+    needs: linting
+    runs-on: ubuntu-latest
+    steps:
       - name: checkout-code
         uses: actions/checkout@v6
       - name: Install dependencies
@@ -24,8 +25,9 @@ jobs:
 
   
   deploying:
-     runs-on: ubuntu-latest
-     steps:
+    needs: testing
+    runs-on: ubuntu-latest
+    steps:
       - name: checkout-code
         uses: actions/checkout@v6
       - name: Install dependencies
