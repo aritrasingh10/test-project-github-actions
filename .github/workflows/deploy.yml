@@ -1,5 +1,5 @@
 name: Lint the code-base and test the code
-on: push
+on: [push, workflow_dispatch]
 jobs:
   linting-the-code-and-test:
     runs-on: ubuntu-latest
